@@ -26,13 +26,10 @@ body.active {
   width: 300px;
   min-height: 100vh;
   display: none;
+  transition: all 2s ease;
 }
 .menu.active {
-  position: absolute;
-  top: 0;
   right: -300px;
-  width: 300px;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

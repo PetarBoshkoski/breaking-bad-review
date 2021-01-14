@@ -38,9 +38,9 @@ const Season = () => {
                   easing: "cubic-bezier(.03,.98,.52,.99)",
                   perspective: 1000,
                 }}
+                key={season.id}
               >
                 <SeasonItem
-                  key={season.id}
                   season={season.season}
                   id={season.id}
                   year={season.year}
