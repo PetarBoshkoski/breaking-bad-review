@@ -4,6 +4,7 @@ import Nav from "../navigation/Nav";
 import SeasonItem from "./SeasonItem";
 import { seasons } from "../../../utils/seasons";
 import { SeasonFlex, SeasonContainer } from "./SeasonStyled";
+import Tilt from "react-tilt";
 
 const Season = () => {
   const [bodyClass, setBodyClass] = useState(false);
@@ -29,13 +30,23 @@ const Season = () => {
         <SeasonContainer>
           {seasons.map((season) => {
             return (
-              <SeasonItem
-                key={season.id}
-                season={season.season}
-                id={season.id}
-                year={season.year}
-                description={season.description}
-              />
+              <Tilt
+                className="Tilt"
+                options={{
+                  max: 20,
+                  speed: 100,
+                  easing: "cubic-bezier(.03,.98,.52,.99)",
+                  perspective: 1000,
+                }}
+              >
+                <SeasonItem
+                  key={season.id}
+                  season={season.season}
+                  id={season.id}
+                  year={season.year}
+                  description={season.description}
+                />
+              </Tilt>
             );
           })}
         </SeasonContainer>
