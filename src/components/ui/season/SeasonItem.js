@@ -14,7 +14,7 @@ const SeasonItem = (props) => {
     <CardWrapper>
       <SeasonCard>
         <CardBody>
-          <Title>Season {props.year}</Title>
+          <Title>Season {props.season} ({props.year})</Title>
           <Description>{props.description}</Description>
           <LinkStyled to={`season/${props.season}/episodes`}>
             <Button>

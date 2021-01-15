@@ -3,9 +3,16 @@ import { useParams } from "react-router-dom";
 import { callApi } from "../../../utils/api";
 import EpisodeItem from "./EpisodeItem";
 import Nav from "../navigation/Nav";
-import { EpisodeFlex, EpisodeContainer, EpisodeWrapper } from "./EpisodeStyled";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import {
+  EpisodeFlex,
+  EpisodeContainer,
+  EpisodeWrapper,
+  BodyImage,
+  Image,
+} from "./EpisodeStyled";
 import { MenuWrapper, Ul, Li } from "../navigation/NavStyled";
+import OverflowScrolling from "react-overflow-scrolling";
+// import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Episode = () => {
   let { season } = useParams();
@@ -41,20 +48,29 @@ const Episode = () => {
       <EpisodeFlex>
         <EpisodeContainer>
           <EpisodeWrapper>
-            {loading ? (
-              <SkeletonTheme color="#202020" highlightColor="#444">
-                {" "}
-                <p>
-                  <Skeleton circle={true} count={1} duration={3} />
-                </p>
-              </SkeletonTheme>
-            ) : seasonEpisodes.length ? (
-              seasonEpisodes.map((episode) => (
-                <EpisodeItem title={episode.title} />
-              ))
-            ) : (
-              "No results found"
-            )}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <OverflowScrolling
+                style={{ height: 400, overflowY: "scroll", margin: "0px 10px" }}
+                className="overflow-scrolling"
+              >
+                {seasonEpisodes.map((episode) => (
+                  <EpisodeItem
+                    key={episode.episode}
+                    loading={loading}
+                    episodeData={episode}
+                  />
+                ))}
+              </OverflowScrolling>
+            </div>
+            <BodyImage>
+              <Image src="https://www.wearetostadora.com/wp-content/uploads/2015/09/bre10.jpg" />
+            </BodyImage>
           </EpisodeWrapper>
         </EpisodeContainer>
       </EpisodeFlex>
@@ -63,3 +79,7 @@ const Episode = () => {
 };
 
 export default Episode;
+
+                {/* <SkeletonTheme color="#999" highlightColor="#fff">
+                  <Skeleton circle={true} count={1} duration={3} />
+                </SkeletonTheme> */}
