@@ -12,7 +12,7 @@ import {
 } from "./EpisodeStyled";
 import { MenuWrapper, Ul, Li } from "../navigation/NavStyled";
 import OverflowScrolling from "react-overflow-scrolling";
-// import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Episode = () => {
   let { season } = useParams();
@@ -22,6 +22,9 @@ const Episode = () => {
 
   useEffect(() => {
     document.body.classList.toggle("active", bodyClass);
+  }, [bodyClass]);
+
+  useEffect(() => {
     callApi()
       .then((response) => setApiData(response))
       .finally(() => setLoading(false));
@@ -55,18 +58,40 @@ const Episode = () => {
                 alignItems: "center",
               }}
             >
-              <OverflowScrolling
-                style={{ height: 400, overflowY: "scroll", margin: "0px 10px" }}
-                className="overflow-scrolling"
-              >
-                {seasonEpisodes.map((episode) => (
-                  <EpisodeItem
-                    key={episode.episode}
-                    loading={loading}
-                    episodeData={episode}
-                  />
-                ))}
-              </OverflowScrolling>
+              {loading ? (
+                <SkeletonTheme
+                  color="#999"
+                  highlightColor="#fff"
+                  style={{ width: "100%", textAlign: "center" }}
+                >
+                  <div style={{ width: "100%" }}>
+                    <p style={{ display: "flex", flexDirection: "row" }}>
+                      <Skeleton
+                        height={50}
+                        width={50}
+                        circle={true}
+                        count={1}
+                        duration={3}
+                        style={{ margin: 7}}
+                      />
+                      <Skeleton count={3} width={500} />
+                    </p>
+                  </div>
+                </SkeletonTheme>
+              ) : (
+                <OverflowScrolling
+                  style={{
+                    height: 400,
+                    overflowY: "scroll",
+                    margin: "0px 10px",
+                  }}
+                  className="overflow-scrolling"
+                >
+                  {seasonEpisodes.map((episode) => (
+                    <EpisodeItem key={episode.episode} episodeData={episode} />
+                  ))}
+                </OverflowScrolling>
+              )}
             </div>
             <BodyImage>
               <Image src="https://www.wearetostadora.com/wp-content/uploads/2015/09/bre10.jpg" />
@@ -79,7 +104,3 @@ const Episode = () => {
 };
 
 export default Episode;
-
-                {/* <SkeletonTheme color="#999" highlightColor="#fff">
-                  <Skeleton circle={true} count={1} duration={3} />
-                </SkeletonTheme> */}

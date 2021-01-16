@@ -11,9 +11,7 @@ import {
 } from "./EpisodeStyled";
 import img from "../../../images/episodes.jpg";
 
-
 const EpisodeItem = (props) => {
-    console.log(props.loading)
   return (
 
     
