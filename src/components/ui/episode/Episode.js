@@ -13,6 +13,7 @@ import {
 import { MenuWrapper, Ul, Li } from "../navigation/NavStyled";
 import OverflowScrolling from "react-overflow-scrolling";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import season_img from "../../../images/season_episodes.png";
 
 const Episode = () => {
   let { season } = useParams();
@@ -37,7 +38,6 @@ const Episode = () => {
   const seasonEpisodes = apiData.filter(
     (item) => item.season === season && item.series === "Breaking Bad"
   );
-
   return (
     <>
       <MenuWrapper>
@@ -51,6 +51,9 @@ const Episode = () => {
       <EpisodeFlex>
         <EpisodeContainer>
           <EpisodeWrapper>
+            <BodyImage main={true}>
+              <Image src={season_img} main={true}/>
+            </BodyImage>
             <div
               style={{
                 display: "flex",
@@ -72,30 +75,43 @@ const Episode = () => {
                         circle={true}
                         count={1}
                         duration={3}
-                        style={{ margin: 7}}
+                        style={{ margin: 7 }}
                       />
                       <Skeleton count={3} width={500} />
                     </p>
                   </div>
                 </SkeletonTheme>
               ) : (
-                <OverflowScrolling
-                  style={{
-                    height: 400,
-                    overflowY: "scroll",
-                    margin: "0px 10px",
-                  }}
-                  className="overflow-scrolling"
-                >
-                  {seasonEpisodes.map((episode) => (
-                    <EpisodeItem key={episode.episode} episodeData={episode} />
-                  ))}
-                </OverflowScrolling>
+                <div>
+                  <div
+                    style={{
+                      width: "100%",
+                      textAlign: "center",
+                      fontSize: "35px",
+                      color: "chartreuse",
+                      cursor: "default",
+                    }}
+                  >
+                    Season {seasonEpisodes[0].season} episodes
+                  </div>
+                  <OverflowScrolling
+                    style={{
+                      height: 400,
+                      overflowY: "scroll",
+                      margin: "0px 10px",
+                    }}
+                    className="overflow-scrolling"
+                  >
+                    {seasonEpisodes.map((episode) => (
+                      <EpisodeItem
+                        key={episode.episode}
+                        episodeData={episode}
+                      />
+                    ))}
+                  </OverflowScrolling>
+                </div>
               )}
             </div>
-            <BodyImage>
-              <Image src="https://www.wearetostadora.com/wp-content/uploads/2015/09/bre10.jpg" />
-            </BodyImage>
           </EpisodeWrapper>
         </EpisodeContainer>
       </EpisodeFlex>

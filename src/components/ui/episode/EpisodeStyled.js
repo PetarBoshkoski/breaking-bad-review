@@ -5,7 +5,6 @@ export const EpisodeFlex = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
 `;
 
 export const EpisodeContainer = styled.div`
@@ -23,7 +22,13 @@ export const EpisodeWrapper = styled.div`
   background: rgba(0, 255, 120, 0.1);
   backdrop-filter: blur(2px);
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 40% 60%;
+  padding: 25px 0px;
+
+  @media screen and (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 100%;
+  }
 `;
 
 export const EpisodeCardWrapper = styled.div`
@@ -67,6 +72,14 @@ export const BodyImage = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  @media screen and (max-width: 768px) {
+    display: ${props => props.main ? "flex" : "block"};
+    justify-content: ${props => props.main ? "center" : ""};
+    align-items: ${props => props.main ? "center" : ""};
+    margin: 0 auto;
+    width: ${props => props.main ? "50%" : "100%"};
+    height: ${props => props.main ? "50%" : "100%"};
+  }
 `;
 
 export const Image = styled.img`
@@ -86,7 +99,7 @@ export const ImageOverlay = styled.div`
 
 export const BodyText = styled.div`
   width: 100%;
-  padding: 5px 10px; 
+  padding: 5px 10px;
   text-align: left;
 `;
 
