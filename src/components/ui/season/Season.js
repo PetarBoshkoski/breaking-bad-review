@@ -16,6 +16,9 @@ const Season = () => {
     menu.classList.toggle("active", !bodyClass);
     setBodyClass(!bodyClass);
   };
+
+  const ref = React.createRef();
+
   return (
     <>
       <MenuWrapper>
@@ -30,15 +33,8 @@ const Season = () => {
         <SeasonContainer>
           {seasons.map((season) => {
             return (
+              <div ref={ref} key={season.id}>
               <Tilt
-                className="Tilt"
-                options={{
-                  max: 20,
-                  speed: 100,
-                  easing: "cubic-bezier(.03,.98,.52,.99)",
-                  perspective: 1000,
-                }}
-                key={season.id}
               >
                 <SeasonItem
                   season={season.season}
@@ -47,6 +43,7 @@ const Season = () => {
                   description={season.description}
                 />
               </Tilt>
+              </div>
             );
           })}
         </SeasonContainer>

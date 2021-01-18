@@ -26,7 +26,7 @@ const Episode = () => {
   }, [bodyClass]);
 
   useEffect(() => {
-    callApi()
+    callApi("episodes")
       .then((response) => setApiData(response))
       .finally(() => setLoading(false));
   }, []);
@@ -52,7 +52,7 @@ const Episode = () => {
         <EpisodeContainer>
           <EpisodeWrapper>
             <BodyImage main={true}>
-              <Image src={season_img} main={true}/>
+              <Image src={season_img} main={true} />
             </BodyImage>
             <div
               style={{
@@ -63,9 +63,9 @@ const Episode = () => {
             >
               {loading ? (
                 <SkeletonTheme
-                  color="#999"
-                  highlightColor="#fff"
-                  style={{ width: "100%", textAlign: "center" }}
+                  color="#76ff7a"
+                  highlightColor="#aaf0d1"
+                  style={{ width: "100%", margin: "0 auto" }}
                 >
                   <div style={{ width: "100%" }}>
                     <p style={{ display: "flex", flexDirection: "row" }}>
@@ -76,8 +76,13 @@ const Episode = () => {
                         count={1}
                         duration={3}
                         style={{ margin: 7 }}
+                        className="skeleton-theme"
                       />
-                      <Skeleton count={3} width={500} />
+                      <Skeleton
+                        count={3}
+                        width={500}
+                        className="skeleton-theme"
+                      />
                     </p>
                   </div>
                 </SkeletonTheme>
@@ -99,6 +104,7 @@ const Episode = () => {
                       height: 400,
                       overflowY: "scroll",
                       margin: "0px 10px",
+                      cursor: "default",
                     }}
                     className="overflow-scrolling"
                   >

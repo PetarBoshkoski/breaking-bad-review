@@ -13,13 +13,11 @@ import img from "../../../images/episodes.jpg";
 
 const EpisodeItem = (props) => {
   return (
-
-    
     <EpisodeCardWrapper>
       <EpisodeCard>
         <EpisodeBody>
           <BodyImage>
-            <Image src={img} />
+            <Image src={img}/>
             <ImageOverlay />
           </BodyImage>
           <BodyText>

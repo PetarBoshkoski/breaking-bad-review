@@ -10,9 +10,9 @@ const api = Axios.create({
 api.defaults.timeout = 15000;
 
 
-export const callApi = async () => {
+export const callApi = async (dataType) => {
     
-    const request = api.get("/episodes");
+    const request = api.get(`/${dataType}`);
     const response = await request;
     const data = response.data;
     return data;

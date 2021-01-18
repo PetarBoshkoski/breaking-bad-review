@@ -58,3 +58,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@media screen and (max-width: 768px) {
+  .react-loading-skeleton.skeleton-theme.css-1vmnjpn-skeletonStyles-Skeleton {
+    width: 200px !important;
+  }
+}

@@ -11,6 +11,10 @@ export const EpisodeContainer = styled.div`
   position: relative;
   width: 1024px;
   z-index: 1;
+
+  @media screen and (max-width: 1024px) {
+    width: 90%;
+  }
 `;
 
 export const EpisodeWrapper = styled.div`
@@ -28,6 +32,7 @@ export const EpisodeWrapper = styled.div`
   @media screen and (max-width: 768px) {
     display: grid;
     grid-template-columns: 100%;
+    margin: 0 auto;
   }
 `;
 
@@ -64,14 +69,29 @@ export const EpisodeBody = styled.div`
   color: #fff;
   display: grid;
   background: rgba(255, 255, 255, 0.1);
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 30% 70%;
   justify-content: center;
+
+  @media screen and (max-width: 1024p) {
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+
+  @media screen and (max-width: 468px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 export const BodyImage = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+
   @media screen and (max-width: 768px) {
     display: ${props => props.main ? "flex" : "block"};
     justify-content: ${props => props.main ? "center" : ""};
@@ -80,11 +100,6 @@ export const BodyImage = styled.div`
     width: ${props => props.main ? "50%" : "100%"};
     height: ${props => props.main ? "50%" : "100%"};
   }
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  height: 100%;
 `;
 
 export const ImageOverlay = styled.div`
