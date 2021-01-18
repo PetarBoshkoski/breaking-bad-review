@@ -5,13 +5,13 @@ const Nav = (props) => {
   return (
     <NavWrapper className="menu" id="menu">
       <Ul>
-        <LinkRouter to="/">
+        <LinkRouter to="https://petarboshkoski.github.io/breaking-bad-review/">
           <Li onClick={() => props.setClasses()}>Home</Li>
         </LinkRouter>
-        <LinkRouter to="/seasons">
+        <LinkRouter to="https://petarboshkoski.github.io/breaking-bad-review/seasons">
           <Li onClick={() => props.setClasses()}>Seasons</Li>
         </LinkRouter>
-        <LinkRouter to="/characters">
+        <LinkRouter to="https://petarboshkoski.github.io/breaking-bad-review/characters">
           <Li onClick={() => props.setClasses()}>Characters</Li>
         </LinkRouter>
       </Ul>
